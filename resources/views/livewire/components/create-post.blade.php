@@ -16,6 +16,25 @@
         </textarea>
     </div>
 
+    @error('content')
+        <span class="error">{{ $message }}</span>
+    @enderror
+
+    <div wire:loading wire:target='images'></div>
+    <div wire:loading wire:target='video'></div>
+
+    @if ($images)
+        @foreach ($images as $images)
+            <img src="{{ $images->temporaryUrl() }}" alt="" width="width:100px">
+        @endforeach
+    @endif
+    @if ($videos)
+        <video src="{{ $videos->temporaryUrl() }}" alt="" width="width:100px; height:100%"></video>
+        <br>
+    @endif
+
+
+    {{-- styles for photo/video icons  --}}
     <style>
         .upload-btn-wrapper {
             position: relative;
@@ -31,6 +50,7 @@
             opacity: 0;
         }
     </style>
+    {{-- end style --}}
 
     <div class="card-body d-flex p-0 mt-0">
         <a href="#"

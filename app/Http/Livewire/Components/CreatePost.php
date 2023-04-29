@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Components;
 use App\Models\Post;
+use App\Models\PostMedia;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -9,6 +11,7 @@ use Livewire\WithFileUploads;
 
 class CreatePost extends Component
 {
+    use WithFileUploads;
     public $content;
     public $images;
     public $video;
@@ -23,9 +26,11 @@ class CreatePost extends Component
                 'content' =>"required|string"
             ]);
 
-            // creating post
+            DB::beginTransaction();
+            try {
+                    // creating post
 
-            Post::create([
+            $post = Post::create([
                 "uuid"=>Str::uuid(),
                 "user_id"=>auth()->id(),
                 "content"=>$this->content,
@@ -33,18 +38,44 @@ class CreatePost extends Component
 
             // if post his media
 
+             // if post photo
             $images= [];
-            if($this->images)
-            {
+            if ($this->images){
                 foreach ($this->images as $images)
                 {
-                    $images[]=$images->store("post/images", "public");
+                    $images[]=$images->store("posts/images", "public");
                 }
+                PostMedia::create([
+                    "post_id" => $post ->id,
+                    "file_type" => 'image',
+                    "file" =>  json_encode($images),
+                    "position" => "general",
+                ]);
             }
 
+            //  if post video media
 
+            $video_file_name= "";
+            if($this->video)
+            {
+                 $video_file_name = $this->video->store("posts/video", "public");
+                 PostMedia::create([
+                    "post_id" => $post ->id,
+                    "file_type" => 'video',
+                    "file" =>  $video_file_name,
+                    "position" => "general",
+                ]);
+
+            }
+            DB::commit();
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                throw $th;
+            }
 
             unset($this->content);
+            unset($this->images);
+            unset($this->video);
             $this->dispatchBrowserEvent('alert', [
                 "type" => "sucess", "message", "Your Post have been Published"
             ]);
