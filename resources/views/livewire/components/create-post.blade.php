@@ -28,8 +28,8 @@
             <img src="{{ $images->temporaryUrl() }}" alt="" width="width:100px">
         @endforeach
     @endif
-    @if ($videos)
-        <video src="{{ $videos->temporaryUrl() }}" alt="" width="width:100px; height:100%"></video>
+    @if ($video)
+        <video src="{{ $video->temporaryUrl() }}" alt="" width="width:100px; height:100%"></video>
         <br>
     @endif
 
