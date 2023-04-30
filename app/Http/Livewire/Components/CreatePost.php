@@ -12,6 +12,9 @@ use Livewire\WithFileUploads;
 class CreatePost extends Component
 {
     use WithFileUploads;
+
+
+    public $message;
     public $content;
     public $images;
     public $video;
@@ -43,7 +46,7 @@ class CreatePost extends Component
             if ($this->images){
                 foreach ($this->images as $images)
                 {
-                    $images[]=$images->store("posts/images", "public");
+                    $images=$images->store("post/images", "public");
                 }
                 PostMedia::create([
                     "post_id" => $post ->id,
@@ -58,7 +61,7 @@ class CreatePost extends Component
             $video_file_name= "";
             if($this->video)
             {
-                 $video_file_name = $this->video->store("posts/video", "public");
+                 $video_file_name = $this->video->store("post/video", "public");
                  PostMedia::create([
                     "post_id" => $post ->id,
                     "file_type" => 'video',
@@ -73,12 +76,14 @@ class CreatePost extends Component
                 throw $th;
             }
 
-            unset($this->content);
-            unset($this->images);
-            unset($this->video);
-            $this->dispatchBrowserEvent('alert', [
-                "type" => "sucess", "message", "Your Post have been Published"
+            $this->reset('content');
+            $this->reset('images');
+            $this->reset('video');
+
+            $this->dispatchBrowserEvent( 'toastr:success', [
+                 'message' => "Your Post have been Published",
             ]);
+
     }
 
 

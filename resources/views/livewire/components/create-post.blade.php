@@ -20,8 +20,8 @@
         <span class="error">{{ $message }}</span>
     @enderror
 
-    <div wire:loading wire:target='images'></div>
-    <div wire:loading wire:target='video'></div>
+    <div wire:loading wire:target='images'>Uploading ........</div>
+    <div wire:loading wire:target='video'>Uploading ........</div>
 
     @if ($images)
         @foreach ($images as $images)
