@@ -14,7 +14,6 @@
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/emoji.css') }}">
-    <link href="http://localhost/socials/public/assets/css/material-dashboard.min.css?v=2.1.0" rel="stylesheet" />
 
 
     <link rel="stylesheet" href=" {{ asset('css/lightbox.css') }}">
@@ -276,7 +275,7 @@
 
     <script src="{{ asset('js/lightbox.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
-    {{-- <script src="{{ asset('js/video-player.js') }}"></script> --}}
+    <script src="{{ asset('js/video-player.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @livewireScripts
 

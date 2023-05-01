@@ -6,7 +6,7 @@
     </div>
     <div class="card-body p-0 mt-3 position-relative">
         <figure class="avatar position-absolute me-2 mt-1 top-5"><img
-                src="{{ auth()->user()->profile ?? 'images/user-8.png' }}" alt="image"
+                src="{{ auth()->user()->profile ? asset("storage").'/'.auth()->user()->profile : 'images/user-8.png' }}" alt="image"
                 class="shadow-sm rounded-circle w30">
         </figure>
         <textarea wire:model.lazy='content' name="content"
@@ -25,7 +25,7 @@
 
     @if ($images)
         @foreach ($images as $images)
-            <img src="{{ $images->temporaryUrl() }}" alt="" width="width:100px">
+            <img src="{{ $images->temporaryUrl() }}" alt="" width="width:100px; height:100%">
         @endforeach
     @endif
     @if ($video)
