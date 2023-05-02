@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'vibe Now') }}</title>
-
+    <title>{{ config('app.name', 'Vibe Now') }}</title>
     <link rel="stylesheet" href=" {{ asset('css/feather.css') }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
@@ -18,10 +17,12 @@
 
     <link rel="stylesheet" href=" {{ asset('css/lightbox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/video-player.css') }}">
-     <link rel="stylesheet" type="text/css"href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet"
+        type="text/css"href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
     @livewireStyles
 </head>
@@ -269,7 +270,35 @@
         </div>
 
     </div>
+    @foreach (App\Models\Story::where('created_at', '>=', now()->subDay())->latest()->get()->unique('user_id') as $story)
+        <div class="modal bottom side fade" id="{{ $story->user->uuid }}" tabindex="-1" role="dialog"
+            style=" overflow-y: auto;">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="bg-transparent border-0 modal-content">
+                    <button type="button" class="mt-0 close position-absolute top--30 right--10"
+                        data-dismiss="modal" aria-label="Close"><i class=" text-grey-900 font-xssss">X</i></button>
+                    <div class="p-0 modal-body">
+                        <div class="overflow-hidden border-0 card w-100 rounded-3 bg-gradiant-bottom bg-gradiant-top">
+                            <div class="owl-carousel owl-theme dot-style3 story-slider owl-dot-nav nav-none">
 
+                                    <div class="item"><img src="{{ asset('storage') . '/' . $story }}"
+                                            alt="image">
+                                    </div>
+
+                            </div>
+                        </div>
+                        <div class="bottom-0 p-3 mt-3 mb-0 form-group position-absolute z-index-1 w-100">
+                            <input type="text"
+                                class="p-3 text-white bg-transparent style2-input w-100 border-light-md pe-5 font-xssss fw-500"
+                                value="Write Comments">
+                            <span class="text-white font-md position-absolute"
+                                style="bottom: 35px;right:30px;"><i class="material-icons">send</i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
     <script src="{{ asset('js/plugin.js') }}"></script>
 

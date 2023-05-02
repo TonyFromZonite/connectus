@@ -16,7 +16,7 @@
         </a>
         <button class="nav-menu ms-2 me-0"></button>
     </div>
-  
+
 
     <form action="" method="GET" class="float-left header-search">
         <div class="mb-0 form-group icon-input">
@@ -27,7 +27,7 @@
     </form>
     <a href="default.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
             class="material-icons font-lg alert-primary btn-round-md theme-dark-bg text-current">home</i></a>
-    <a href="default-storie.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
+    <a href="{{route('explore')}}" class="{{ request()->route()->getName() == 'explore'? 'bg-primary': '' }}  p-2 text-center ms-0 menu-icon center-menu-icon"><i
             class="material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">bolt</i></a>
     <a href="default-video.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
             class="material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">videocam</i></a>

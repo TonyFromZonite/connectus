@@ -34,48 +34,13 @@
                 <div class="col-xl-8 col-xxl-9 col-lg-8">
 
 
-                    <div class="card w-100 shadow-none bg-transparent bg-transparent-card border-0 p-0 mb-0">
-                        <div class="owl-carousel category-card owl-theme overflow-hidden nav-none">
-                            <div class="item">
-                                <div data-bs-toggle="modal" data-bs-target="#Modalstory"
-                                    class="card w125 h200 d-block border-0 shadow-none rounded-xxxl bg-dark overflow-hidden mb-3 mt-3">
-                                    <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
-                                        <a href="#">
-                                            <span class="btn-round-lg bg-white"><i
-                                                    class="material-icons font-lg">add</i></span>
-                                            <div class="clearfix"></div>
-                                            <h4
-                                                class="fw-700 position-relative z-index-1 ls-1 font-xssss text-white mt-2 mb-1">
-                                                Add Story </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div data-bs-toggle="modal" data-bs-target="#Modalstory"
-                                    class="card w125 h200 d-block border-0 shadow-xss rounded-xxxl bg-gradiant-bottom overflow-hidden cursor-pointer mb-3 mt-3"
-                                    style="background-image: url(../images/s-1.jpg);">
-                                    <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
-                                        <a href="#">
-                                            <figure class="avatar me-auto ms-auto mb-0 position-relative w50 z-index-1">
-                                                <img src="../images/user-11.png" alt="image"
-                                                    class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
-                                            </figure>
-                                            <div class="clearfix"></div>
-                                            <h4
-                                                class="fw-600 position-relative z-index-1 ls-1 font-xssss text-white mt-2 mb-1">
-                                                Victor Exrixon </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
+                  
 
 
-
+                    @livewire('components.stories')
                     @livewire('components.create-post')
+
+
                     {{-- post page --}}
                     @forelse ($post as $post)
                         <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">

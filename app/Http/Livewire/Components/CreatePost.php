@@ -61,7 +61,7 @@ class CreatePost extends Component
 
             $video_file_name = "";
             if ($this->video) {
-                $video_file_name = $this->video->store("posts/post/video", "public");
+                $video_file_name = $this->video->store("posts/video", "public");
                 PostMedia::create([
                     "post_id" => $post->id,
                     "file_type" => 'video',
@@ -80,9 +80,11 @@ class CreatePost extends Component
         $this->reset('images');
         $this->reset('video');
 
+
         $this->dispatchBrowserEvent('toastr:success', [
             'message' => "Your Post have been Published",
         ]);
+        return redirect('/');
 
     }
 

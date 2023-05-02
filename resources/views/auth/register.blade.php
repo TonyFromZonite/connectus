@@ -65,6 +65,17 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div class="form-group custom-file mb-3">
+
+                                <input type="file" id="profile" class="custom-file-input @error('profile') is-invalid @enderror" name="profile"
+                                    autofocus>
+
+                                @error('profile')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="form-group icon-input mb-3">
                                 <i class="material-icons">phone</i>
                                 <input type="number" id="number"
