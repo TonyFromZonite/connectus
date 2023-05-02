@@ -69,101 +69,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div data-bs-toggle="modal" data-bs-target="#Modalstory"
-                                    class="card w125 h200 d-block border-0 shadow-xss rounded-xxxl bg-gradiant-bottom overflow-hidden cursor-pointer mb-3 mt-3"
-                                    style="background-image: url(../images/s-2.jpg);">
-                                    <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
-                                        <a href="#">
-                                            <figure class="avatar me-auto ms-auto mb-0 position-relative w50 z-index-1">
-                                                <img src="../images/user-12.png" alt="image"
-                                                    class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
-                                            </figure>
-                                            <div class="clearfix"></div>
-                                            <h4
-                                                class="fw-600 position-relative z-index-1 ls-1 font-xssss text-white mt-2 mb-1">
-                                                Surfiya Zakir </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div data-bs-toggle="modal" data-bs-target="#Modalstory"
-                                    class="card w125 h200 d-block border-0 shadow-xss rounded-xxxl bg-gradiant-bottom overflow-hidden cursor-pointer mb-3 mt-3">
-                                    <video autoplay loop class="float-right w-100">
-                                        <source src="../images/s-4.mp4" type="video/mp4">
-                                    </video>
-                                    <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
-                                        <a href="#">
-                                            <figure class="avatar me-auto ms-auto mb-0 position-relative w50 z-index-1">
-                                                <img src="../images/user-9.png" alt="image"
-                                                    class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
-                                            </figure>
-                                            <div class="clearfix"></div>
-                                            <h4
-                                                class="fw-600 position-relative z-index-1 ls-1 font-xssss text-white mt-2 mb-1">
-                                                Goria Coast </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div data-bs-toggle="modal" data-bs-target="#Modalstory"
-                                    class="card w125 h200 d-block border-0 shadow-xss rounded-xxxl bg-gradiant-bottom overflow-hidden cursor-pointer mb-3 mt-3 ms-1">
-                                    <video autoplay loop class="float-right w-100">
-                                        <source src="../images/s-3.mp4" type="video/mp4">
-                                    </video>
-                                    <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
-                                        <a href="#">
-                                            <figure class="avatar me-auto ms-auto mb-0 position-relative w50 z-index-1">
-                                                <img src="../images/user-4.png" alt="image"
-                                                    class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
-                                            </figure>
-                                            <div class="clearfix"></div>
-                                            <h4
-                                                class="fw-600 position-relative z-index-1 ls-1 font-xssss text-white mt-2 mb-1">
-                                                Hurin Seary </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div data-bs-toggle="modal" data-bs-target="#Modalstory"
-                                    class="card w125 h200 d-block border-0 shadow-xss rounded-xxxl bg-gradiant-bottom overflow-hidden cursor-pointer mb-3 mt-3"
-                                    style="background-image: url(../images/s-5.jpg);">
-                                    <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
-                                        <a href="#">
-                                            <figure class="avatar me-auto ms-auto mb-0 position-relative w50 z-index-1">
-                                                <img src="../images/user-3.png" alt="image"
-                                                    class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
-                                            </figure>
-                                            <div class="clearfix"></div>
-                                            <h4
-                                                class="fw-600 position-relative z-index-1 ls-1 font-xssss text-white mt-2 mb-1">
-                                                David Goria </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div data-bs-toggle="modal" data-bs-target="#Modalstory"
-                                    class="card w125 h200 d-block border-0 shadow-xss rounded-xxxl bg-gradiant-bottom overflow-hidden cursor-pointer mb-3 mt-3"
-                                    style="background-image: url(../images/s-6.jpg);">
-                                    <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
-                                        <a href="#">
-                                            <figure
-                                                class="avatar me-auto ms-auto mb-0 position-relative w50 z-index-1">
-                                                <img src="../images/user-2.png" alt="image"
-                                                    class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
-                                            </figure>
-                                            <div class="clearfix"></div>
-                                            <h4
-                                                class="fw-600 position-relative z-index-1 ls-1 font-xssss text-white mt-2 mb-1">
-                                                Seary Victor </h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -228,9 +134,9 @@
                                         @php
                                             $media = $post_media->file;
                                         @endphp
-                                        <div class=" col-xs-4 col-sm-12 p-1  ">
+                                        <div class=" col-xs-4 col-sm-6 p-2  ">
                                             <a href="{{ asset('storage') . '/' . $media }}" data-lightbox="roadtrip"
-                                                class= 'position-relative d-block'>
+                                                class='position-relative d-block'>
                                                 <img src="{{ asset('storage') . '/' . $media }}"
                                                     class="rounded-3 w-100" alt="image">
 
@@ -238,7 +144,7 @@
                                         </div>
                                     @elseif ($post_media && $post_media->file_type == 'video')
                                         <video id="my-video" class="video-js" controls preload="auto"
-                                            data-setup="{}" width="100%" height="100%">
+                                            data-setup="{}" width="100%" height="50%">
                                             <source src="{{ asset('storage') . '/' . $post_media->file }}"
                                                 type="video/mp4" />
                                             <p class="vjs-no-js">
@@ -257,29 +163,30 @@
 
                             {{-- Like fonctionalities Start --}}
                             <div class="card-body d-flex p-0 mt-3">
-                                <a href="#"
-                                    class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss ms-2"><i
-                                        class=" material-icons text-white bg-primary-gradiant ms-1 btn-round-xs font-xss">thumb_up</i>
-                                    <i
-                                        class="material-icons text-white bg-red-gradiant ms-2 btn-round-xs font-xss">favorite</i>2.8K
-                                    Like</a>
-                                <div class="emoji-wrap">
-                                    <ul class="emojis list-inline mb-0">
-                                        <li class="emoji list-inline-item"><i class="em em---1"></i> </li>
-                                        <li class="emoji list-inline-item"><i class="em em-angry"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-anguished"></i> </li>
-                                        <li class="emoji list-inline-item"><i class="em em-astonished"></i> </li>
-                                        <li class="emoji list-inline-item"><i class="em em-blush"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-clap"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-cry"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-full_moon_with_face"></i>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {{-- like sectiond --}}
+                                @php
+                                    $like = App\Models\Like::where(['post_id' => $post->id, 'user_id' => auth()->id()])->first();
+                                @endphp
+                                @if ($like)
+                                    <a href="#" wire:click.prevent='dislike({{ $post->id }})'
+                                        class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss ms-2"><i
+                                            class=" material-icons text-primary  me-2 btn-round font-sl">thumb_up</i>
+                                        {{ $post->likes ?? 0 }} like
+                                    </a>
+                                @else
+                                    <a href="#" wire:click.prevent='like({{ $post->id }})'
+                                        class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss ms-2"><i
+                                            class=" material-icons text-black  me-2 btn-round font-sl">thumb_up</i>
+                                        {{ $post->likes ?? 0 }} like
+                                    </a>
+                                @endif
+                                {{-- end of like section --}}
+
+                                {{-- comment section start --}}
                                 <a href="#"
                                     class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="material-icons text-primary  btn-round-sm font-lg">message</i><span
-                                        class="d-none-xss">22 Comment</span></a>
+                                        class="d-none-xss">{{ $post->comments }} Comment</span></a>
                                 <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                     class="me-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
@@ -326,6 +233,12 @@
                                         class="bg-grey text-grey-500 font-xssss border-0 lh-32 p-2 font-xssss fw-600 rounded-3 w-100 theme-dark-bg">
                                 </div>
                             </div>
+                            <form method="POST" wire:submit.prevent="saveComment({{ $post->id }})">
+                                <input type="text" placeholder="write your comments here..." required
+                                    name="comment" wire:model.lazy="comment"
+                                    class="p-2 border-0 bg-grey text-grey-500 font-xssss lh-32 fw-600 rounded-3 w-100 theme-dark-bg"
+                                    id="">
+                            </form>
                             {{-- end of like functionalities --}}
                         </div>
 
