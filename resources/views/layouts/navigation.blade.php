@@ -25,12 +25,12 @@
                 class="pt-2 pb-2 border-0 bg-grey lh-32 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg">
         </div>
     </form>
-    <a href="default.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
-            class="material-icons font-lg alert-primary btn-round-md theme-dark-bg text-current">home</i></a>
-    <a href="{{route('explore')}}" class="{{ request()->route()->getName() == 'explore'? 'bg-primary': '' }}  p-2 text-center ms-0 menu-icon center-menu-icon"><i
-            class="material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">bolt</i></a>
-    <a href="default-video.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
-            class="material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">videocam</i></a>
+    <a href="{{url('/')}}" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
+            class=" {{ request()->route()->getName() == 'dashboard'? 'bg-primary text-white': '' }} material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900">home</i></a>
+    <a href="{{route('explore')}}" class="  p-2 text-center ms-0 menu-icon center-menu-icon"><i
+            class=" {{ request()->route()->getName() == 'explore'? 'bg-primary text-white' : '' }} material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">bolt</i></a>
+    <a href="{{route("videos")}}" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
+            class=" {{ request()->route()->getName() == 'videos'? 'bg-primary text-white': '' }}  material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">videocam</i></a>
     <a href="default-group.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
             class="material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">person</i></a>
 

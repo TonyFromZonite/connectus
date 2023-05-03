@@ -6,12 +6,12 @@
                 <div class="col-xl-12">
                     <div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
                         <div class="card-body d-flex align-items-center p-0">
-                            <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Friends</h2>
-                            <div class="search-form-2 me-auto">
-                                <i class="ti-search font-xss left-15 right-auto"></i>
-                                <input type="text" class="form-control text-grey-500 mb-0 bg-greylight theme-dark-bg border-0" placeholder="Search here.">
+                            <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Explore</h2>
+                            <div class="search-form-2 ms-auto">
+                                <i class="material-icons font-xss  right-auto text-primary">search</i>
+                                <input type="text" class="form-control text-black-500 mb-0 bg-greylight theme-dark-bg border-0" placeholder="Search here.">
                             </div>
-                            <a href="#" class="btn-round-md me-2 bg-greylight theme-dark-bg rounded-3"><i class="feather-filter font-xss text-grey-500"></i></a>
+                            <a href="#" class="btn-round-md me-2 bg-greylight theme-dark-bg rounded-3"><i class="material-icons font-xs text-primary">filter_alt</i></a>
                         </div>
                     </div>
 

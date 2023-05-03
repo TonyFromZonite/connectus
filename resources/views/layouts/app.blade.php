@@ -41,7 +41,10 @@
         @include('layouts.left-navigation')
         <!-- navigation left -->
         <!-- main content -->
-        @livewire('home')
+
+            {{ $slot  ?? ''}}
+
+
         <!-- main content -->
 
         <!-- right chat -->
@@ -281,9 +284,8 @@
                         <div class="overflow-hidden border-0 card w-100 rounded-3 bg-gradiant-bottom bg-gradiant-top">
                             <div class="owl-carousel owl-theme dot-style3 story-slider owl-dot-nav nav-none">
 
-                                    <div class="item"><img src="{{ asset('storage') . '/' . $story }}"
-                                            alt="image">
-                                    </div>
+                                <div class="item"><img src="{{ asset('storage') . '/' . $story }}" alt="image">
+                                </div>
 
                             </div>
                         </div>
@@ -291,8 +293,8 @@
                             <input type="text"
                                 class="p-3 text-white bg-transparent style2-input w-100 border-light-md pe-5 font-xssss fw-500"
                                 value="Write Comments">
-                            <span class="text-white font-md position-absolute"
-                                style="bottom: 35px;right:30px;"><i class="material-icons">send</i></span>
+                            <span class="text-white font-md position-absolute" style="bottom: 35px;right:30px;"><i
+                                    class="material-icons">send</i></span>
                         </div>
                     </div>
                 </div>

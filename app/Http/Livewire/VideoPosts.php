@@ -6,12 +6,13 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
 
+use App\Models\PostMedia;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class Home extends Component
+class VideoPosts extends Component
 {
-    public $paginate_no = 10;
+    public $paginate_no = 25;
     public $comment;
 
     public function saveComment($post_id){
@@ -67,8 +68,9 @@ class Home extends Component
 
     public function render()
     {
-        return view('livewire.home', [
-            'posts'=>Post::with('user')->latest()->paginate($this->paginate_no)
+        $posts = PostMedia::where("file_type", "video")->latest()->pluck("post_id");
+        return view('livewire.video-posts', [
+            'posts' => Post::whereIn("id", $posts)->with("user")->latest()->paginate($this->paginate_no)
         ]);
     }
 }
