@@ -26,7 +26,7 @@
         </div>
     </form>
     <a href="{{url('/')}}" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
-            class=" {{ request()->route()->getName() == 'dashboard'? 'bg-primary text-white': '' }} material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900">home</i></a>
+            class=" material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900">home</i></a>
     <a href="{{route('explore')}}" class="  p-2 text-center ms-0 menu-icon center-menu-icon"><i
             class=" {{ request()->route()->getName() == 'explore'? 'bg-primary text-white' : '' }} material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">bolt</i></a>
     <a href="{{route("videos")}}" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
