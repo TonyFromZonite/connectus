@@ -48,7 +48,10 @@ class User extends Authenticatable
 
     public function is_friend()
     {
-        return (Friend::where(["user_id" => $this->id])->orWhere("friend_id", $this->id)->first()->status ?? "");
+              // dd(Friend::where(["user_id" => $this->id])->orWhere("friend_id", $this->id));
+              $friend = Friend::where(["user_id" => $this->id])->orWhere("friend_id", $this->id)->first();
+        // dd($friend);
+        return $friend ? $friend->status : "";
     }
     /**
      * The attributes that should be cast.

@@ -32,12 +32,13 @@
                                         <h4 class="fw-700 font-xsss mt-3 mb-1"> {{ $user->name }} </h4>
                                         <small class="fw-500 font-xsssss text-grey-500 mt-0 mb-3"> @
                                             {{ $user->name }}</small><br>
-                                        @if ($user->is_friend() == 'pending')
-                                            <button wire:click="removefriend({{ $user->uuid }})"
+                                            {{-- {{dd($user->is_friend())}} --}}
+                                        @if ($user->is_friend() == "pending")
+                                            <button wire:click="removefriend('{{ $user->id }}')"
                                                 class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-warning font-xsssss fw-700 ls-lg text-white">CANCEL
                                             </button>
                                         @elseif ($user->is_friend() == 'rejected')
-                                            <button w
+                                            <button
                                                 class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-dansger font-xsssss fw-700 ls-lg text-white">REJECTED
                                             </button>
                                         @elseif ($user->is_friend() == 'accepted')
@@ -45,7 +46,7 @@
                                                 class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-info font-xsssss fw-700 ls-lg text-white">FRIEND
                                             </button>
                                         @else
-                                            <button wire:click="addfriend({{ $user->uuid }})"
+                                            <button wire:click="addfriend('{{ $user->id }}')"
                                                 class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-success font-xsssss fw-700 ls-lg text-white">ADD
                                                 FRIEND
                                             </button>

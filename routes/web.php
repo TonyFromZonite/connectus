@@ -16,7 +16,6 @@ use App\Http\Livewire\Peoples;
 |
 */
 Route::middleware(["auth", "verified", 'VerifiedUser'])->group(function () {
-    Route::get('/', Home::class)->name("home");
     Route::get('/videos', VideoPosts::class)->name("videos");
     Route::get('/explore', Peoples::class)->name("explore");
 });

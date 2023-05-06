@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Friend;
 use App\Models\Notification;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -18,7 +19,8 @@ class Peoples extends Component
 
     public function addfriend($id)
     {
-        $user = User::where("uuid",$id)->first();
+        // dd($id);
+        $user = User::where("id",$id)->first();
 
 
         DB::beginTransaction();
@@ -44,22 +46,34 @@ class Peoples extends Component
     }
     public function removefriend($id)
     {
-        $user = User::where("uuid",$id)->first();
-
+        $user = User::find($id);
 
         DB::beginTransaction();
         try {
-            Friend::where([
-                'user_id' => auth()->id(),
-                "friend_id" => $user->id,
-            ])->first()->delete();
-            Notification::create([
-                "type" => "friend_request",
-                "user_id" => $user->id,
-                "message" => auth()->user()->name . " Canceled friend request",
-                "url" => '#',
-            ]);
-            DB::commit();
+            if($user){
+                // dd($user->id);
+                $friends = Friend::where([
+                    'user_id' => auth()->id(),
+                    'friend_id' => $user->id,
+                ])->get();
+
+                // dd(auth()->id(), $user->id,$friends);
+
+
+                foreach ($friends as $key => $friend) {
+                    $friend->delete();
+                }
+                    // dd($friend);
+                Notification::create([
+                    "type" => "friend_request",
+                    "user_id" => $user->id,
+                    "message" => auth()->user()->name . " Canceled friend request ",
+                    "url" => '#',
+                ]);
+                DB::commit();
+            }
+
+
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
