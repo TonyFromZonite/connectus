@@ -1,4 +1,3 @@
-
 <div class="main-content right-chat-active">
 
     <div class="middle-sidebar-bottom">
@@ -103,14 +102,14 @@
                                         <div class=" col-xs-4 col-sm-6 p-2  ">
                                             <a href="{{ asset('storage') . '/' . $media }}" data-lightbox="roadtrip"
                                                 class='position-relative d-block'>
-                                                <img src="{{ asset('storage') . '/' . $media }}"
-                                                    class="rounded-3 w-100" alt="image">
+                                                <img src="{{ asset('storage') . '/' . $media }}" class="rounded-3 w-100"
+                                                    alt="image">
 
                                             </a>
                                         </div>
                                     @elseif ($post_media && $post_media->file_type == 'video')
-                                        <video id="my-video" class="video-js" controls preload="auto"
-                                            data-setup="{}" width="100%">
+                                        <video id="my-video" class="video-js" controls preload="auto" data-setup="{}"
+                                            width="100%">
                                             <source src="{{ asset('storage') . '/' . $post_media->file }}"
                                                 type="video/mp4" />
                                             <p class="vjs-no-js">
@@ -153,8 +152,7 @@
                                     class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="material-icons text-primary  btn-round-sm font-lg">message</i><span
                                         class="d-none-xss">{{ $post->comments }} Comment</span></a>
-                                <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown"
-                                    aria-expanded="false"
+                                <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown" aria-expanded="false"
                                     class="me-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="material-icons  text-primary btn-round-sm font-lg">share</i><span
                                         class="d-none-xs">Share</span></a>
@@ -224,26 +222,34 @@
                 {{-- end of post-page --}}
 
                 <div class="col-xl-4 col-xxl-3 col-lg-4 pe-lg-0">
-                    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
-                        <div class="card-body d-flex align-items-center p-4">
-                            <h4 class="fw-700 mb-0 font-xssss text-grey-900">Friend Request</h4>
-                            <a href="{{route('explore')}}" class="fw-600 me-auto font-xssss text-primary">See all</a>
-                        </div>
-                        <div class="card-body d-flex pt-4 pe-4 ps-4 pb-0 border-top-xs bor-0">
-                            <figure class="avatar ms-3"><img src="../images/user-7.png" alt="image"
-                                    class="shadow-sm rounded-circle w45"></figure>
-                            <h4 class="fw-700 text-grey-900 font-xssss mt-1">Anthony Daugloi <span
-                                    class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">12 mutual friends</span>
-                            </h4>
-                        </div>
-                        <div class="card-body d-flex align-items-center pt-0 pe-4 ps-4 pb-4">
-                            <a href="#"
-                                class="p-2 lh-20 w100 bg-primary-gradiant ms-2 text-white text-center font-xssss fw-600 ls-1 rounded-xl">Confirm</a>
-                            <a href="#"
-                                class="p-2 lh-20 w100 bg-grey text-grey-800 text-center font-xssss fw-600 ls-1 rounded-xl">Delete</a>
-                        </div>
+                    @if (count($friend_request))
+                        <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
+                            <div class="card-body d-flex align-items-center p-4">
+                                <h4 class="fw-700 mb-0 font-xssss text-grey-900">Friend Request</h4>
+                                <a href="{{ route('explore') }}" class="fw-600 me-auto font-xssss text-primary">See
+                                    all</a>
+                            </div>
+                            @forelse ($friend_request as $user)
+                                <div class="card-body d-flex pt-4 pe-4 ps-4 pb-0 border-top-xs bor-0">
+                                    <figure class="avatar ms-3"><img src="../images/user-7.png" alt="image"
+                                            class="shadow-sm rounded-circle w45"></figure>
+                                    <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{$user->user->name}} <span
+                                            class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">12 mutual
+                                            friends</span>
+                                    </h4>
+                                </div>
+                                <div class="card-body d-flex align-items-center pt-0 pe-4 ps-4 pb-4">
+                                    <button wire:click='acceptfriend({{$user->user_id}})'
+                                        class="p-2 lh-20 w100 bg-primary-gradiant ms-2 text-white text-center font-xssss fw-600 ls-1 rounded-xl">Confirm</button>
+                                    <button wire:click='rejectfriend({{$user->user_id}})'
+                                        class="p-2 lh-20 w100 bg-grey text-grey-800 text-center font-xssss fw-600 ls-1 rounded-xl">Delete</button>
+                                </div>
+                            @empty
+                            @endforelse
 
-                    </div>
+                        </div>
+                    @endif
+
 
                     <div class="card w-100 shadow-xss rounded-xxl border-0 p-0 ">
                         <div class="card-body d-flex align-items-center p-4 mb-0">

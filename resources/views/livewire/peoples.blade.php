@@ -19,8 +19,8 @@
                         </div>
                     </div>
 
-                    @forelse ($users as $user)
-                        <div class="row pe-2 ps-2">
+                    <div class="row pe-2 ps-2">
+                        @forelse ($users as $user)
                             <div class="col-md-3 col-sm-4 ps-2 pe-2">
                                 <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
                                     <div class="card-body d-block w-100 pe-3 ps-3 pb-4 text-center">
@@ -32,14 +32,31 @@
                                         <h4 class="fw-700 font-xsss mt-3 mb-1"> {{ $user->name }} </h4>
                                         <small class="fw-500 font-xsssss text-grey-500 mt-0 mb-3"> @
                                             {{ $user->name }}</small><br>
-                                            {{-- {{dd($user->is_friend())}} --}}
-                                        @if ($user->is_friend() == "pending")
+                                        {{-- {{dd($user->is_friend())}} --}}
+                                        @if (App\Models\Friend::Where([
+                                                'friend_id' => auth()->id(),
+                                                'user_id' => $user->id,
+                                                'status' => 'pending',
+                                            ])->exists())
+                                            <button wire:click="acceptfriend('{{ $user->id }}')"
+                                                class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-primary font-xsssss fw-700 ls-lg text-white">ACCEPT
+                                            </button>
+                                        @elseif (App\Models\Friend::Where([
+                                                'friend_id' => $user->id,
+                                                'user_id' => auth()->id(),
+                                                'status' => 'pending',
+                                            ])->exists())
                                             <button wire:click="removefriend('{{ $user->id }}')"
                                                 class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-warning font-xsssss fw-700 ls-lg text-white">CANCEL
                                             </button>
-                                        @elseif ($user->is_friend() == 'rejected')
-                                            <button
-                                                class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-dansger font-xsssss fw-700 ls-lg text-white">REJECTED
+                                        @elseif (App\Models\Friend::Where([
+                                                'friend_id' => auth()->id(),
+                                                'user_id' => $user->id,
+                                                'status' => 'rejected',
+                                            ])->exists())
+                                            <button wire:click="addfriend('{{ $user->id }}')"
+                                                class="mt-0 btn pt-2 pb-2 pe-3 ps-3 lh-24 me-1 ls-3 d-inline-block rounded-xl bg-success font-xsssss fw-700 ls-lg text-white">ADD
+                                                FRIEND
                                             </button>
                                         @elseif ($user->is_friend() == 'accepted')
                                             <button
@@ -57,13 +74,13 @@
                             </div>
                         @empty
                             <h4 class="text-center text-danger">No User Found</h4>
-                    @endforelse
+                        @endforelse
 
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </div>
