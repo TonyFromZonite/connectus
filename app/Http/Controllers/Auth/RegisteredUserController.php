@@ -38,10 +38,14 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'tel' => 'sometimes|string|max:255|unique:users,mobile',
+            'profile' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
         $profile = "";
+
+
         if ($request->file("profile")) {
             $profile = $request->file("profile")->store("profiles", "public");
         }
@@ -51,14 +55,14 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'mobile' => $request->tel,
             'gender' => $request->gender,
-            'profile' => $profile ?? "",
+            'profile' => $profile,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
-        
+
         auth()->user()->sendEmailVerificationNotification();
         return redirect(RouteServiceProvider::VERIFY)->with('status', 'verification-link-sent');
 

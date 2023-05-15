@@ -25,9 +25,9 @@
                                 <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
                                     <div class="card-body d-block w-100 pe-3 ps-3 pb-4 text-center">
                                         <figure class="avatar me-auto ms-auto mb-0 position-relative w65 z-index-1"><img
-                                                src="../images/user-7.png" alt="image"
+                                                src="{{ asset('storage') . '/' . $user->profile }}" alt="image"
                                                 class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
-                                        </figure><br>
+                                        </figure><br><br><br>
                                         <div class="clearfix"></div>
                                         <h4 class="fw-700 font-xsss mt-3 mb-1"> {{ $user->name }} </h4>
                                         <small class="fw-500 font-xsssss text-grey-500 mt-0 mb-3"> @

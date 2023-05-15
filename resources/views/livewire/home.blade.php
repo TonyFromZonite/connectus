@@ -45,7 +45,7 @@
                     @forelse ($posts as $post)
                         <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
                             <div class="card-body p-0 d-flex">
-                                <figure class="avatar ms-3"><img src="../images/user-7.png" alt="image"
+                                <figure class="avatar ms-3"><img src={{ asset('storage') . '/' . $post->user->profile }} alt="image"
                                         class="shadow-sm rounded-circle w45"></figure>
                                 <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{ $post->user->name }}
                                     <span
@@ -84,7 +84,10 @@
                                 </div>
                             </div>
                             <div class="card-body p-0 ms-lg-5">
-                                <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">{{ $post->content }} </p>
+                                <a
+                                    href="{{ route('single-post', ['useruuid' => $post->user->id, 'postuuid' => $post->uuid]) }}">
+                                    <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">{{ $post->content }} </p>
+                                </a>
                             </div>
 
                             {{-- contentPost Start --}}
@@ -102,14 +105,14 @@
                                         <div class=" col-xs-4 col-sm-6 p-2  ">
                                             <a href="{{ asset('storage') . '/' . $media }}" data-lightbox="roadtrip"
                                                 class='position-relative d-block'>
-                                                <img src="{{ asset('storage') . '/' . $media }}" class="rounded-3 w-100"
-                                                    alt="image">
+                                                <img src="{{ asset('storage') . '/' . $media }}" class="rounded-3  h-10"
+                                                    alt="image" width="200%" height="100%">
 
                                             </a>
                                         </div>
                                     @elseif ($post_media && $post_media->file_type == 'video')
                                         <video id="my-video" class="video-js" controls preload="auto" data-setup="{}"
-                                            width="100%">
+                                        width="100%" height="100%">
                                             <source src="{{ asset('storage') . '/' . $post_media->file }}"
                                                 type="video/mp4" />
                                             <p class="vjs-no-js">
@@ -153,7 +156,7 @@
                                         class="material-icons text-primary  btn-round-sm font-lg">message</i><span
                                         class="d-none-xss">{{ $post->comments }} Comment</span></a>
                                 <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown" aria-expanded="false"
-                                    class="me-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
+                                    class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="material-icons  text-primary btn-round-sm font-lg">share</i><span
                                         class="d-none-xs">Share</span></a>
                                 <div class="dropdown-menu dropdown-menu-end p-4 rounded-xxl border-0 shadow-lg "
@@ -192,8 +195,9 @@
                                     <h4 class="fw-700 font-xssss mt-4 text-grey-500 d-flex align-items-center mb-3">
                                         Copy Link</h4>
                                     <i
-                                        class="material-icons position-absolute left-15 ms-4 mt-3 font-xs text-grey-500">file_copy</i>
-                                    <input type="text" value="https://socia.be/1rGxjoJKVF0"
+                                        class="material-icons position-absolute left-15 ms-4 mt-3 font-xs text-grey-500">file</i>
+                                    <input type="text"
+                                        value="{{ route('single-post', ['useruuid' => $post->user->uuid, 'postuuid' => $post->uuid]) }}"
                                         class="bg-grey text-grey-500 font-xssss border-0 lh-32 p-2 font-xssss fw-600 rounded-3 w-100 theme-dark-bg">
                                 </div>
                             </div>
@@ -231,17 +235,20 @@
                             </div>
                             @forelse ($friend_request as $user)
                                 <div class="card-body d-flex pt-4 pe-4 ps-4 pb-0 border-top-xs bor-0">
-                                    <figure class="avatar ms-3"><img src="../images/user-7.png" alt="image"
-                                            class="shadow-sm rounded-circle w45"></figure>
-                                    <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{$user->user->name}} <span
-                                            class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">12 mutual
-                                            friends</span>
+                                    <figure class="avatar ms-3">
+                                        <img src="{{ asset('storage') . '/' . $user->user->profile }}" alt="image"
+                                            class="shadow-sm rounded-circle w45">
+                                    </figure>
+                                    <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{ $user->user->name }}
+                                        <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">12 mutual
+                                            friends
+                                        </span>
                                     </h4>
                                 </div>
                                 <div class="card-body d-flex align-items-center pt-0 pe-4 ps-4 pb-4">
-                                    <button wire:click='acceptfriend({{$user->user_id}})'
+                                    <button wire:click='acceptfriend({{ $user->user_id }})'
                                         class="p-2 lh-20 w100 bg-primary-gradiant ms-2 text-white text-center font-xssss fw-600 ls-1 rounded-xl">Confirm</button>
-                                    <button wire:click='rejectfriend({{$user->user_id}})'
+                                    <button wire:click='rejectfriend({{ $user->user_id }})'
                                         class="p-2 lh-20 w100 bg-grey text-grey-800 text-center font-xssss fw-600 ls-1 rounded-xl">Delete</button>
                                 </div>
                             @empty

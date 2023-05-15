@@ -36,12 +36,14 @@
         </div>
 
         @forelse ($stories as $story)
-        {{-- {{dd($story->story)}} --}}
 
             <div class="item">
-                <div data-bs-toggle="#modal" data-bs-target="#{{ $story->user->uuid }}"
+                {{-- {{dd($story->user->id)}} --}}
+
+                <div data-bs-toggle="modal" data-bs-target="#{{ $story->user->id }}"
+
                     class="card w125 h200 d-block border-0 shadow-xss rounded-xxxl bg-gradiant-bottom overflow-hidden cursor-pointer mb-3 mt-3"
-                    style="background-image: url({{ asset('storage') . '/' . $story->story }});">
+                    style="background-image: url({{ asset('storage') . '/' . $story->story[1] }});">
                     <div class="card-body d-block p-3 w-100 position-absolute bottom-0 text-center">
                         <a href="#">
                             <figure class="avatar me-auto ms-auto mb-0 position-relative w50 z-index-1">

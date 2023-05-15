@@ -4,6 +4,8 @@ use App\Http\Livewire\VideoPosts;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Peoples;
+use App\Http\Livewire\Profile;
+use App\Http\Livewire\SinglePost;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +18,13 @@ use App\Http\Livewire\Peoples;
 |
 */
 Route::middleware(["auth", "verified", 'VerifiedUser'])->group(function () {
+    Route::get('/', Home::class);
+    Route::get('/post/{useruuid}/{postuuid}', SinglePost::class)->name('single-post');
     Route::get('/videos', VideoPosts::class)->name("videos");
+    Route::get('/profile', Profile::class)->name("profile");
     Route::get('/explore', Peoples::class)->name("explore");
 });
 
-Route::get('/', Home::class)->middleware(['auth', 'verified', 'VerifiedUser']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
