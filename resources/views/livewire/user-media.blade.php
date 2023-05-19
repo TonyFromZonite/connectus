@@ -83,17 +83,20 @@
                             <ul class="nav nav-tabs h55 d-flex product-info-tab border-bottom-0 ps-4" id="pills-tab"
                                 role="tablist">
                                 <li class="active list-inline-item me-5"><a
-                                        class="fw-700 font-xssss text-grey-500 pt-3 pb-3 ls-1 d-inline-block active"
-                                        href="#navtabs1" wire:click="toggle" data-toggle="tab">About</a></li>
+                                        class="fw-700 font-xssss text-grey-500 pt-3 pb-3 ls-1 d-inline-block "
+                                        href="#navtabs1" data-toggle="tab" wire:click="toggle">About</a></li>
 
-                                <li class="list-inline-item me-5"><a href="#" wire:click="toggle"
-                                        class="pt-3 pb-3 fw-700 me-sm-5 font-xssss text-grey-500 ls-1 d-inline-block">Media</a>
+                                <li class="list-inline-item me-5">
+                                    <a class="fw-700 me-sm-5 font-xssss text-grey-500 pt-3 pb-3 ls-1 d-inline-block active"
+                                        href="#navtabs7" data-toggle="tab">Media
+                                    </a>
                                 </li>
+
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
+                {{-- <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
                     <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
                         <div class="card-body d-block p-4">
                             <h4 class="fw-700 mb-3 font-xsss text-grey-900">About</h4>
@@ -135,8 +138,8 @@
 
 
 
-                </div>
-                <div class="col-xl-8 col-xxl-9 col-lg-8">
+                </div> --}}
+                <div class="col-12">
 
 
 
