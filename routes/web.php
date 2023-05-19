@@ -6,6 +6,7 @@ use App\Http\Livewire\Home;
 use App\Http\Livewire\Peoples;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\SinglePost;
+use App\Http\Livewire\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,8 @@ Route::middleware(["auth", "verified", 'VerifiedUser'])->group(function () {
     Route::get('/', Home::class);
     Route::get('/post/{useruuid}/{postuuid}', SinglePost::class)->name('single-post');
     Route::get('/videos', VideoPosts::class)->name("videos");
-    Route::get('/profile', Profile::class)->name("profile");
+    // Route::get('/profile', Profile::class)->name("profile");
+    Route::get('/user/{uuid}', User::class)->name("user");
     Route::get('/explore', Peoples::class)->name("explore");
 });
 

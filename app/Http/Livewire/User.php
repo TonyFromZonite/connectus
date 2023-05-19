@@ -5,23 +5,20 @@ namespace App\Http\Livewire;
 use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
-use App\Models\User;
+use App\Models\PostMedia;
+use App\Models\User as ModelsUser;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class SinglePost extends Component
+class User extends Component
 {
-    public $user_uuid;
-    public $post_uuid;
+    public $uuid;
+
+
+    public $paginate_no = 10;
     public $comment;
 
-     public function mount($useruuid,$postuuid)
-     {
-        $this->user_uuid = $useruuid;
-        $this->post_uuid = $postuuid;
-     }
-
-     public function saveComment($post_id){
+    public function saveComment($post_id){
         $this->validate([
             'comment'=> 'required|string'
         ]);
@@ -40,10 +37,7 @@ class SinglePost extends Component
             DB::rollBack();
             throw $th;
         }
-        $this->reset('comment');
-
-     }
-
+    }
     public function like($id)
     {
         DB::beginTransaction();
@@ -74,14 +68,21 @@ class SinglePost extends Component
         }
     }
 
+    public function mount($uuid){
+        $this->uuid = $uuid;
+    }
     public function render()
     {
-        $user = User::where(['id'=>$this->user_uuid])->first();
-        $post = Post::where(['user_id'=>$user->id, 'uuid'=>$this->post_uuid])->with(['user', 'commentss' => function ($query) {
-            $query->where('status', 'published'); }])->first();
-        // dd($user);
-        return view('livewire.single-post', [
-            'post' => $post
+        $user = ModelsUser::where('uuid', $this->uuid )->firstOrFail();
+        $posts_ids = Post::where("user_id", $user->id)->pluck("id");
+
+        $post = Post::where("user_id", $user->id)->get();
+        $post_media = PostMedia::whereIn("post_id", $posts_ids)->where("file_type", "image")->get();
+
+        return view('livewire.user', [
+            'user' => $user,
+            'posts' => $post,
+            'post_media' => $post_media,
         ]);
     }
 }

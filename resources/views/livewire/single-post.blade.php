@@ -33,7 +33,7 @@
             <div class="row feed-body">
                 <div class="col-12 ">
 
-
+                    
                     <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
                         <div class="card-body p-0 d-flex">
                             <figure class="avatar ms-3"><img src={{ asset('storage') . '/' . $post->user->profile }}

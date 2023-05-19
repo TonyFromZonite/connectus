@@ -84,7 +84,7 @@ class CreatePost extends Component
         $this->dispatchBrowserEvent('toastr:success', [
             'message' => "Your Post have been Published",
         ]);
-        return redirect('/');
+        return redirect('/'.$this);
 
     }
 
