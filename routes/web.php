@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Peoples;
 use App\Http\Livewire\Profile;
+use App\Http\Livewire\Setting\AccountInfomation;
+use App\Http\Livewire\Setting\Help;
+use App\Http\Livewire\Setting\Notifications;
+use App\Http\Livewire\Setting\PasswordUpdate;
+use App\Http\Livewire\Setting\Setting;
 use App\Http\Livewire\SinglePost;
 use App\Http\Livewire\User;
 
@@ -24,7 +29,19 @@ Route::middleware(["auth", "verified", 'VerifiedUser'])->group(function () {
     Route::get('/videos', VideoPosts::class)->name("videos");
     // Route::get('/profile', Profile::class)->name("profile");
     Route::get('/user/{uuid}', User::class)->name("user");
+
+
+    // User settings
+    Route::prefix('user-profile')->group(function () {
+        Route::get('/', Setting::class)->name("setting");
+        Route::get('/setting', AccountInfomation::class)->name("setting.account_information");
+        Route::get('/reset-password', PasswordUpdate::class)->name("setting.password_update");
+        Route::get('/notification', Notifications::class)->name("setting.notifications");
+        Route::get('/help', Help::class)->name("setting.help");
+    });
+
     Route::get('/explore', Peoples::class)->name("explore");
+
 });
 
 
@@ -32,4 +49,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

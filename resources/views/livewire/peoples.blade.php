@@ -29,7 +29,8 @@
                                                 class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
                                         </figure><br><br><br>
                                         <div class="clearfix"></div>
-                                        <h4 class="fw-700 font-xsss mt-3 mb-1"> {{ $user->name }} </h4>
+                                        <h4 class="fw-700 font-xsss mt-3 mb-1"> <a
+                                            href="{{ route('user', $user->uuid) }}">{{ $user->name }}</a> </h4>
                                         <small class="fw-500 font-xsssss text-grey-500 mt-0 mb-3"> @
                                             {{ $user->name }}</small><br>
                                         {{-- {{dd($user->is_friend())}} --}}

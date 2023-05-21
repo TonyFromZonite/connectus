@@ -32,16 +32,13 @@
             <!-- loader wrapper -->
             <div class="row feed-body">
                 <div class="col-12 ">
-
-                    
                     <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
-                        <div class="card-body p-0 d-flex">
-                            <figure class="avatar ms-3"><img src={{ asset('storage') . '/' . $post->user->profile }}
+                        <div class="p-0 card-body d-flex">
+                            <figure class="avatar me-3"><img
+                                    src="{{ $post->user->profile ? asset('storage') . '/' . $post->user->profile : 'images/user-7.png' }}"
                                     alt="image" class="shadow-sm rounded-circle w45"></figure>
-                            <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{ $post->user->name }}
-                                <span
-                                    class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{ $post->created_at->diffForHumans() }}
-                                </span>
+                            <h4 class="mt-1 fw-700 text-grey-900 font-xssss">{{ $post->user->name }} <span
+                                    class="mt-1 d-block font-xssss fw-500 lh-3 text-grey-500">{{ $post->created_at->diffForHumans() }}</span>
                             </h4>
                             <a href="#" class="ms-auto" id="dropdownMenu2" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i

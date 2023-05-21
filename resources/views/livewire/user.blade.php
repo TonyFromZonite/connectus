@@ -66,6 +66,7 @@
                                         ])->first()->id }}')"
                                         class="p-3 text-white bg-success d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">UnFriend</button>
                                 @else
+                                {{-- {{dd($user->uuid)}} --}}
                                     <button wire:click="addfriend({{ $user->uuid }})"
                                         class="p-3 text-white bg-success d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">ADD
                                         FRIEND</button>

@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string("thumbnial"  )->nullable();
             $table->string("profile")->nullable();
             $table->enum("gender",["male","female"]);
+            $table->string("address")->nullable();
+            $table->string("location")->nullable();
             $table->boolean("is_private")->default(0);
             $table->boolean("is_banned")->default(0);
             $table->string('password');

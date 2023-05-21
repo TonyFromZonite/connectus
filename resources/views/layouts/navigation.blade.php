@@ -168,7 +168,7 @@
     </div>
 
 
-    <a href="default-settings.html" class="p-0 ms-2 rounded-2 menu-icon"><img
+    <a href="{{route('setting')}}" class="p-0 ms-2 rounded-2 menu-icon"><img
             src=" {{ auth()->user()->profile ? asset('storage') . '/' . auth()->user()->profile : 'images/user-8.png' }}"
             alt="user" class="w25 mt--1"></a>
 

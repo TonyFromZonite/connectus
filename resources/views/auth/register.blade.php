@@ -9,7 +9,7 @@
 
         <div class="nav-header bg-transparent shadow-none border-0">
             <div class="nav-top w-100">
-                <i class="material-icons text-primary display1-size me-2 ms-0">storm</i>
+                <i class="material-icons text-success display1-size me-2 ms-0">electric_bolt</i>
                 <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">Vibe Now.
                 </span>
                 <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i
@@ -77,7 +77,7 @@
                                     </span>
                                 @enderror
                             </div>
-                  
+
 
                             <label for="">Gender</label><br>
                             <div class="mb-2 form-check form-check-inline">

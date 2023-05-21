@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Comment;
+use App\Models\Friend;
 use App\Models\Like;
+use App\Models\Notification;
 use App\Models\Post;
 use App\Models\PostMedia;
 use App\Models\User as ModelsUser;
@@ -19,7 +21,57 @@ class User extends Component
     public $paginate_no = 10;
     public $comment;
 
-    public function toggle(){
+
+    public function addfriend($id)
+    {
+        $user = ModelsUser::where("uuid", $id)->first();
+
+        DB::beginTransaction();
+        try {
+            Friend::create([
+                "user_id" => auth()->id(),
+                "friend_id" => $user->id,
+            ]);
+            Notification::create([
+                "type" => "friend_request",
+                "user_id" => $user->id,
+                "message" => auth()->user()->name . " send you friend request",
+                "url" => "#",
+            ]);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+        $this->dispatchBrowserEvent('toastr:success', [
+            'message' => " Friend request send ", $user->name
+        ]);
+    }
+    public function removefriend($id)
+    {
+
+        DB::beginTransaction();
+        try {
+            $req = Friend::findOrFail($id);
+            $temp = $req->user_id == auth()->id() ? $req->friend_id : $req->user_id;
+            Notification::create([
+                "type" => "friend_request",
+                "user_id" => $temp,
+                "message" => auth()->user()->username . " canceled friend request",
+                "url" => "#",
+            ]);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+        $this->dispatchBrowserEvent('toastr:success', [
+            'message' => " Friend Request cancelled   " . ModelsUser::find($temp)->name
+        ]);
+    }
+
+    public function toggle()
+    {
         $this->loader = !$this->loader;
     }
 
