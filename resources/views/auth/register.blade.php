@@ -37,7 +37,7 @@
                 <div class="card shadow-none border-0 ms-auto me-auto login-card">
                     <div class="card-body rounded-0 text-left">
                         <h2 class="fw-700 display1-size display2-md-size mb-4">Create your account</h2>
-                        <form class="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" >
+                        <form class="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group icon-input mb-3">
                                 <i class="material-icons">person</i>
@@ -68,8 +68,9 @@
                             <div class="mb-3 custom-file form-group">
 
 
-                                    <input id="profile" class="custom-file-input  @error('profile') is-invalid @enderror" type="file" required name="profile" >
-                                    <label for="profile" class="custom-file-label">Profile</label>
+                                <input id="profile" class="custom-file-input  @error('profile') is-invalid @enderror"
+                                    type="file" required name="profile">
+                                <label for="profile" class="custom-file-label">Profile</label>
 
                                 @error('profile')
                                     <span class="invalid-feedback" role="alert">
