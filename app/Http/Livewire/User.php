@@ -35,7 +35,7 @@ class User extends Component
             Notification::create([
                 "type" => "friend_request",
                 "user_id" => $user->id,
-                "message" => auth()->user()->name . " send you friend request",
+                "message" => auth()->user()->nmae . " send you friend request",
                 "url" => "#",
             ]);
             DB::commit();
@@ -44,7 +44,7 @@ class User extends Component
             throw $th;
         }
         $this->dispatchBrowserEvent('toastr:success', [
-            'message' => " Friend request send ", $user->name
+            'message' => " Friend request send to " . $user->name,
         ]);
     }
     public function removefriend($id)
@@ -57,7 +57,7 @@ class User extends Component
             Notification::create([
                 "type" => "friend_request",
                 "user_id" => $temp,
-                "message" => auth()->user()->username . " canceled friend request",
+                "message" => auth()->user()->name . " canceled friend request",
                 "url" => "#",
             ]);
             DB::commit();
@@ -66,8 +66,9 @@ class User extends Component
             throw $th;
         }
         $this->dispatchBrowserEvent('toastr:success', [
-            'message' => " Friend Request cancelled   " . ModelsUser::find($temp)->name
+            'message' => " Friend request canceled from " . ModelsUser::find($temp)->name,
         ]);
+
     }
 
     public function toggle()

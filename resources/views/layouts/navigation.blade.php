@@ -18,7 +18,7 @@
     </div>
 
 
-    <form action="" method="GET" class="float-left header-search">
+    <form action="{{route('search')}}" method="GET" class="float-left header-search">
         <div class="mb-0 form-group icon-input">
             <i class="material-icons font-sm text-primary-400" style="margin-top: 1px">search</i>
             <input type="text" name="query" placeholder="Start typing to search.."
@@ -31,8 +31,6 @@
             class=" {{ request()->route()->getName() == 'explore'? 'bg-primary text-white': '' }} material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">bolt</i></a>
     <a href="{{ route('videos') }}" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
             class=" {{ request()->route()->getName() == 'videos'? 'bg-primary text-white': '' }}  material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">videocam</i></a>
-    <a href="default-group.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i
-            class="material-icons font-lg bg-greylight btn-round-md theme-dark-bg text-primary-900 ">person</i></a>
 
     <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown"
         aria-expanded="false">
@@ -59,7 +57,7 @@
 
 
     </div>
-    <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i
+    <a href="{{route('chatify')}}" class="p-2 text-center ms-3 menu-icon "><i
             class="material-icons font-xl text-current">chat</i></a>
     <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
         <i class="material-icons animation-spin d-inline-block font-xl text-current">settings</i>

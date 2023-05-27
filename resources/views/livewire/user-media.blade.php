@@ -214,8 +214,8 @@
                                             </a>
                                         </div>
                                     @elseif ($post_media && $post_media->file_type == 'video')
-                                        <video id="my-video" class="video-js" controls preload="auto"
-                                            data-setup="{}" width="100%" height="100%">
+                                        <video id="my-video" class="video-js" controls preload="auto" data-setup="{}"
+                                            width="100%" height="100%">
                                             <source src="{{ asset('storage') . '/' . $post_media->file }}"
                                                 type="video/mp4" />
                                             <p class="vjs-no-js">

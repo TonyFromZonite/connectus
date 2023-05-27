@@ -43,7 +43,7 @@
 
                                 <ul class="list-inline">
                                     <li class="list-inline-item d-block border-bottom me-0"><a
-                                            href="default-notification.html"
+                                            href="{{route('setting.notifications')}}"
                                             class="pt-2 pb-2 d-flex align-items-center"><i
                                                 class="btn-round-md bg-gold-gradiant text-white material-icons font-md me-3">notifications</i>
                                             <h4 class="fw-600 font-xsss mb-0 mt-0">Notification</h4>

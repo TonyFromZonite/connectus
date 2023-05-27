@@ -91,9 +91,6 @@ class Home extends Component
             DB::rollBack();
             throw $th;
         }
-        $this->dispatchBrowserEvent('toastr:success', [
-            'message' => " Friend request Accepted " ,
-        ]);
     }
 
     public function rejectfriend($id){

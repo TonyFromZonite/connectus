@@ -31,51 +31,49 @@
 
                             </div>
                             <div
-                                class="d-flex align-items-center justify-content-center position-absolute right-15 top-10 mt-2 me-2">
-
+                                class="mt-2 d-flex align-items-center justify-content-center position-absolute right-15 top-10 me-2">
                                 @if (auth()->id() == $user->id)
-                                    <a href="#"
+                                    <a href="{{ route('setting') }}"
                                         class="p-3 text-white bg-primary d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">Edit</a>
                                 @elseif (App\Models\Friend::Where([
-                                        'friend_id' => auth()->id(),
-                                        'user_id' => $user->id,
-                                        'status' => 'pending',
-                                    ])->exists())
+                                    'friend_id' => auth()->id(),
+                                    'user_id' => $user->id,
+                                    'status' => 'pending',
+                                ])->exists())
                                     <button wire:click="acceptfriend('{{ $user->id }}')"
                                         class="p-3 text-white bg-primary d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">Confirm</button>
                                 @elseif (App\Models\Friend::Where([
-                                        'friend_id' => $user->id,
-                                        'user_id' => auth()->id(),
-                                        'status' => 'pending',
-                                    ])->exists())
+                                    'friend_id' => $user->id,
+                                    'user_id' => auth()->id(),
+                                    'status' => 'pending',
+                                ])->exists())
                                     <button wire:click="removefriend('{{ $user->uuid }}')"
                                         class="p-3 text-white bg-warning d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">CANCEL</button>
+
                                 @elseif ($user->is_friend() == 'accepted')
                                     <button
                                         class="p-3 text-white bg-info d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">FRIEND</button>
+
                                 @elseif (App\Models\Friend::Where([
-                                        'friend_id' => $user->id,
-                                        'user_id' => auth()->id(),
-                                        'status' => 'accepted',
-                                    ])->exists())
+                                    'friend_id' => $user->id,
+                                    'user_id' => auth()->id(),
+                                    'status' => 'approved',
+                                ])->exists())
                                     <button
                                         wire:click="removefriend('{{ App\Models\Friend::Where([
                                             'friend_id' => $user->id,
                                             'user_id' => auth()->id(),
-                                            'status' => 'accepted',
+                                            'status' => 'rejected',
                                         ])->first()->id }}')"
                                         class="p-3 text-white bg-success d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">UnFriend</button>
-                                @else
-                                {{-- {{dd($user->uuid)}} --}}
-                                    <button wire:click="addfriend({{ $user->uuid }})"
-                                        class="p-3 text-white bg-success d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">ADD
-                                        FRIEND</button>
+                                    @else
+                                        <button
+                                        wire:click="addfriend({{ $user->uuid }})"
+                                        class="p-3 text-white bg-success d-none d-lg-block z-index-1 rounded-3 font-xsssss text-uppercase fw-700 ls-3">ADD FRIEND</button>
                                 @endif
-
-                                <a href="#"
+                                <a href="/chatify/{{ $user->id }}"
                                     class="d-none d-lg-block bg-greylight btn-round-lg ms-2 rounded-3 text-grey-700"><i
-                                        class="material-icons font-md">email</i></a>
-
+                                        class=" font-md material-icons" style="margin-top: -10px">mail</i></a>
                             </div>
                         </div>
 
