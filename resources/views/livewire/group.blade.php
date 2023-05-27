@@ -28,13 +28,11 @@
                         <div class="card-body d-flex align-items-center justify-content-center ps-4 pe-4 pt-0">
                             @if (App\Models\GroupMember::where(['user_id' => auth()->id(), 'group_id' => $group->id])->exists())
                                 <a wire:click="leave({{ $group->id }})"
-                                    class="bg-warning p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Leave</a>
-                            @elseif (App\Models\Group::where(['user_id' => auth()->id(), 'id' => $group->id])->exists())
-                                <a
-                                    class="bg-primary p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Settings</a>
+                                    class="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-warning font-xsssss fw-700 ls-lg text-white">Leave</a>
                             @else
                                 <a wire:click="join({{ $group->id }})"
-                                    class="bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Join</a>
+                                    class="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">Join</a>
+
                             @endif
                             <a href="#" class="bg-greylight btn-round-lg ms-2 rounded-3 text-grey-700"><i
                                     class=" font-md material-icons" style="margin-top: -10px">mail</i></a>
@@ -47,7 +45,8 @@
                             <p class="fw-500 text-grey-500 lh-24 font-xssss mb-0">{{ $group->description }}</p>
                         </div>
                         <div class="card-body border-top-xs d-flex">
-                            <i class=" text-grey-500 me-3 font-lg material-icons">{!! $group->is_private == 1 ? : '-' !!} lock_outline</i>
+                            <i class=" text-grey-500 me-3 font-lg material-icons">{!! $group->is_private == 1 ?: !!}
+                                lock</i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-0">Private <span
                                     class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">Only Accessable thro
                                     URL</span></h4>
@@ -58,11 +57,11 @@
                             <h4 class="fw-700 text-grey-900 font-xssss mt-0">Visble <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">Anyone can find you</span></h4>
                         </div> --}}
                         <div class="card-body d-flex pt-0">
-                            <i class=" text-grey-500 me-3 font-lg material-icons" style="margin-top: -10px">location</i>
+                            <i class=" text-grey-500 me-3 font-lg material-icons" style="margin-top: -10px">place</i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{ $group->location }} </h4>
                         </div>
                         <div class="card-body d-flex pt-0">
-                            <i class=" text-grey-500 me-3 font-lg material-icons" style="margin-top: -10px">users</i>
+                            <i class=" text-grey-500 me-3 font-lg material-icons" style="margin-top: -10px">person</i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{ $group->type }}</h4>
                         </div>
                     </div>
@@ -79,9 +78,9 @@
 
                                     @foreach ($group_images as $image)
                                         <div class="mb-2 col-6 pe-1"><a
-                                                href="{{ asset('storage') . '/' . ($image->file)[0] }}"
+                                                href="{{ asset('storage') . '/' . $image->file[0] }}"
                                                 data-lightbox="roadtrip"><img
-                                                    src="{{ asset('storage') . '/' . ($image->file)[0] }}"
+                                                    src="{{ asset('storage') . '/' . $image->file[0] }}"
                                                     alt="image" class="img-fluid rounded-3 w-100"></a>
                                         </div>
                                     @endforeach
@@ -91,7 +90,8 @@
                             <div class="card-body d-block w-100 pt-0">
                                 <a href="#"
                                     class="p-2 lh-28 w-100 d-block bg-grey text-grey-800 text-center font-xssss fw-700 rounded-xl"><i
-                                        class=" font-xss me-2 material-icons" style="margin-top: -10px">external_link</i>
+                                        class=" font-xss me-2 material-icons"
+                                        style="margin-top: -10px">external_link</i>
                                     More</a>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                 <div class="col-xl-8 col-xxl-9 col-lg-8">
 
                     @if (App\Models\GroupMember::where(['user_id' => auth()->id(), 'group_id' => $group->id])->exists() ||
-                        App\Models\Group::where(['user_id' => auth()->id(), 'id' => $group->id]))
+                            App\Models\Group::where(['user_id' => auth()->id(), 'id' => $group->id]))
                         @livewire('components.create-post', ['type' => 'group', 'id' => $group->id])
                     @endif
 
