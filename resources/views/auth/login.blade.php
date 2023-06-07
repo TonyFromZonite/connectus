@@ -21,10 +21,10 @@
 
                 <a href="{{route('login')}}"
                     class="header-btn d-none d-lg-block bg-dark fw-500 text-white font-xsss p-3 ms-auto w100 text-center lh-20 rounded-xl"
-                    data-bs-toggle="modal" data-bs-target="#Modallogin">{{ __('Login') }}</a>
+                    >{{ __('Login') }}</a>
                 <a href="{{route('register')}}"
                     class="header-btn d-none d-lg-block bg-current fw-500 text-white font-xsss p-3 ms-2 w100 text-center lh-20 rounded-xl"
-                    data-bs-toggle="modal" data-bs-target="#Modalregister">{{ __('Register') }}</a>
+                    >{{ __('Register') }}</a>
 
             </div>
 
@@ -37,7 +37,7 @@
             <div class="col-xl-7 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
                 <div class="card shadow-none border-0 ms-auto me-auto login-card">
                     <div class="card-body rounded-0 text-left">
-                        <h2 class="fw-700 display1-size display2-md-size mb-3">Login into your account</h2>
+                        <h2 class="fw-700 display1-size display2-md-size text-current text-center mb-3">Login   </h2>
                         @foreach ($errors->all() as $error)
                             <div class="alert alert-danger" role="alert">
                                 {{ $error }}
@@ -78,7 +78,7 @@
 
                             <div class="col-sm-12 p-0 text-left">
                                 <div class="form-group mb-1"><button type="submit"
-                                        class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">Login</button>
+                                        class="form-control text-center style2-input text-white fw-600 bg-current border-0 p-0 ">Login</button>
                                 </div>
                                 <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Dont have account <a
                                         href="{{ route('register') }}" class="fw-700 ms-1">Register</a></h6>

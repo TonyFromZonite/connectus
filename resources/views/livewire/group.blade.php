@@ -45,7 +45,7 @@
                             <p class="fw-500 text-grey-500 lh-24 font-xssss mb-0">{{ $group->description }}</p>
                         </div>
                         <div class="card-body border-top-xs d-flex">
-                            <i class=" text-grey-500 me-3 font-lg material-icons">{!! $group->is_private == 1 ?: !!}
+                            <i class=" text-grey-500 me-3 font-lg material-icons">{!! $group->is_private == 1 !!}
                                 lock</i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-0">Private <span
                                     class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">Only Accessable thro
