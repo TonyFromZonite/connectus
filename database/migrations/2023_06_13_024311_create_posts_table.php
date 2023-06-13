@@ -24,8 +24,11 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger("comments")->default(0);
             $table->boolean("is_page_post")->default(0);
             $table->foreignId("page_id")->nullable()->constrained()->cascadeOnDelete();
-            $table->boolean("is_group_post")->default(0);
+            $table->boolean("is_group_post")->default(0);$table->unsignedBigInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreignId("group_id")->nullable()->constrained()->cascadeOnDelete();
+
             $table->softDeletes();
             $table->timestamps();
         });
