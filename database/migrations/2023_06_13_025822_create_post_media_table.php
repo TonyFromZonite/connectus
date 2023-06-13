@@ -22,7 +22,6 @@ class CreatePostMediaTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

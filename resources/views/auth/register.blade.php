@@ -19,11 +19,9 @@
                 <button class="nav-menu me-0 ms-2"></button>
 
                 <a href="{{ route('login') }}"
-                    class="header-btn d-none d-lg-block bg-dark fw-500 text-white font-xsss p-3 ms-auto w100 text-center lh-20 rounded-xl"
-                    data-bs-toggle="modal" data-bs-target="#Modallogin">Login</a>
+                    class="header-btn d-none d-lg-block bg-dark fw-500 text-white font-xsss p-3 ms-auto w100 text-center lh-20 rounded-xl">{{ __('Login') }}</a>
                 <a href="{{ route('register') }}"
-                    class="header-btn d-none d-lg-block bg-current fw-500 text-white font-xsss p-3 ms-2 w100 text-center lh-20 rounded-xl"
-                    data-bs-toggle="modal" data-bs-target="#Modalregister">Register</a>
+                    class="header-btn d-none d-lg-block bg-current fw-500 text-white font-xsss p-3 ms-2 w100 text-center lh-20 rounded-xl">{{ __('Register') }}</a>
 
             </div>
 
@@ -36,7 +34,8 @@
             <div class="col-xl-7 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
                 <div class="card shadow-none border-0 ms-auto me-auto login-card">
                     <div class="card-body rounded-0 text-left">
-                        <h2 class="fw-700 display1-size display2-md-size mb-4">Create your account</h2>
+                        <br><br><br>
+                        <h2 class="fw-700 display1-size display2-md-size mb-4 text-current">Create your account</h2>
                         <form class="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group icon-input mb-3">
@@ -145,7 +144,7 @@
                             <div class="col-sm-12 p-0 text-left">
                                 <div class="form-group mb-1">
                                     <button type="submit"
-                                        class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">{{ __('Register') }}</button>
+                                        class="form-control text-center style2-input text-white fw-600 bg-current border-0 p-0 ">{{ __('Register') }}</button>
                                 </div>
                                 <h6 class="text-black-500 font-xsss fw-500 mt-0 mb-0 lh-32">Already have account <a
                                         href="{{ route('login') }}" class="fw-700 ms-1">{{ __('Login') }}</a></h6>

@@ -29,6 +29,8 @@ class CreateGroupsTable extends Migration
         });
     }
 
+   
+
     /**
      * Reverse the migrations.
      *
